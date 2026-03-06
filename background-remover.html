@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Remover - Remove Image Background Instantly | Toolyfi</title>
+    <meta name="description" content="Free AI-powered background remover. Upload any image and get instant transparent PNG. Ultra HD quality, no limits, 100% free forever.">
+    <meta name="keywords" content="background remover, remove background, transparent PNG, AI tool, free online tool">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .feature {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        .feature strong {
+            color: #667eea;
+        }
+        
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+        }
+        
+        .upload-area:hover {
+            background: #eef2ff;
+            border-color: #764ba2;
+        }
+        
+        .upload-area.dragover {
+            background: #eef2ff;
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .upload-text {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .upload-subtext {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        #imageInput {
+            display: none;
+        }
+        
+        .preview-area {
+            display: none;
+            margin-bottom: 20px;
+        }
+        
+        .preview-area.show {
+            display: block;
+        }
+        
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .preview-item {
+            text-align: center;
+        }
+        
+        .preview-item h3 {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .preview-item img {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        #originalImage {
+            background: #fff;
+        }
+        
+        #processedImage {
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+                        linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-color: #fff;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-process {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-process:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-download {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-download:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reset {
+            background: #f44336;
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background: #da190b;
+        }
+        
+        .btn-download:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .status.show {
+            display: block;
+        }
+        
+        .status.processing {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status.success {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status.error {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .info {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .info strong {
+            color: #333;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .preview-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖼️ Background Remover</h1>
+            <p>Remove image backgrounds instantly with AI</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <strong>✨</strong> <br> AI Powered
+            </div>
+            <div class="feature">
+                <strong>⚡</strong> <br> Ultra Fast
+            </div>
+            <div class="feature">
+                <strong>🆓</strong> <br> 100% Free
+            </div>
+        </div>
+        
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📤</div>
+            <div class="upload-text">Drop image here or click to upload</div>
+            <div class="upload-subtext">PNG, JPG, GIF, BMP, WEBP (Max 50MB)</div>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+        
+        <div class="preview-area" id="previewArea">
+            <div class="preview-container">
+                <div class="preview-item">
+                    <h3>Original Image</h3>
+                    <img id="originalImage" src="" alt="Original">
+                </div>
+                <div class="preview-item">
+                    <h3>Processed Image</h3>
+                    <img id="processedImage" src="" alt="Processed">
+                </div>
+            </div>
+            
+            <div class="status" id="status"></div>
+            
+            <div class="button-group">
+                <button class="btn-process" id="processBtn" onclick="processImage()">🔄 Remove Background</button>
+                <button class="btn-download" id="downloadBtn" onclick="downloadImage()" disabled>⬇️ Download PNG</button>
+                <button class="btn-reset" id="resetBtn" onclick="resetTool()">↺ Reset</button>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>💡 How it works:</strong><br>
+            1. Upload your image<br>
+            2. Click "Remove Background"<br>
+            3. Download the transparent PNG<br><br>
+            <strong>✅ Features:</strong> AI-powered, Ultra HD quality, Transparent PNG output, No watermarks
+        </div>
+    </div>
+    
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const previewArea = document.getElementById('previewArea');
+        const originalImage = document.getElementById('originalImage');
+        const processedImage = document.getElementById('processedImage');
+        const statusDiv = document.getElementById('status');
+        const processBtn = document.getElementById('processBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        let selectedFile = null;
+        let processedImageData = null;
+        
+        // API endpoint (change this to your Vercel backend URL)
+        const API_URL = 'https://background-remover-api.vercel.app/api/remove';
+        
+        // Upload area click
+        uploadArea.addEventListener('click', () => imageInput.click());
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect(files[0]);
+            }
+        });
+        
+        // File input change
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+        
+        function handleFileSelect(file) {
+            if (!file.type.startsWith('image/')) {
+                showStatus('Please select a valid image file', 'error');
+                return;
+            }
+            
+            if (file.size > 50 * 1024 * 1024) {
+                showStatus('File is too large (max 50MB)', 'error');
+                return;
+            }
+            
+            selectedFile = file;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                originalImage.src = e.target.result;
+                previewArea.classList.add('show');
+                processedImage.src = '';
+                downloadBtn.disabled = true;
+                showStatus('Image loaded. Ready to process!', 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        async function processImage() {
+            if (!selectedFile) {
+                showStatus('Please select an image first', 'error');
+                return;
+            }
+            
+            showStatus('<span class="spinner"></span> Processing... This may take a moment', 'processing');
+            processBtn.disabled = true;
+            
+            try {
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Processing failed');
+                }
+                
+                const blob = await response.blob();
+                processedImageData = blob;
+                const url = URL.createObjectURL(blob);
+                processedImage.src = url;
+                
+                downloadBtn.disabled = false;
+                showStatus('✅ Background removed successfully!', 'success');
+            } catch (error) {
+                showStatus('Error processing image. Please try again.', 'error');
+                console.error('Error:', error);
+            } finally {
+                processBtn.disabled = false;
+            }
+        }
+        
+        function downloadImage() {
+            if (!processedImageData) return;
+            
+            const url = URL.createObjectURL(processedImageData);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'image_no_background.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus('✅ Download started!', 'success');
+        }
+        
+        function resetTool() {
+            selectedFile = null;
+            processedImageData = null;
+            originalImage.src = '';
+            processedImage.src = '';
+            imageInput.value = '';
+            previewArea.classList.remove('show');
+            downloadBtn.disabled = true;
+            statusDiv.classList.remove('show');
+            showStatus('Ready to upload new image', 'success');
+        }
+        
+        function showStatus(message, type) {
+            statusDiv.innerHTML = message;
+            statusDiv.className = `status show ${type}`;
+        }
+    </script>
+</body>
+</html>

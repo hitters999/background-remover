@@ -12,7 +12,6 @@ Remove image backgrounds instantly with AI-powered precision. Upload any image a
 🔒 **Private** - Images are processed and deleted immediately
 📦 **Multiple Formats** - PNG, JPG, GIF, BMP, WEBP support
 📊 **Large Files** - Up to 50MB file size support
-
 ## Tech Stack
 
 - **Frontend:** HTML5, CSS3, JavaScript

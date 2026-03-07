@@ -3,481 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Remover - Remove Image Background Instantly | Toolyfi</title>
-    <meta name="description" content="Free AI-powered background remover. Upload any image and get instant transparent PNG. Ultra HD quality, no limits, 100% free forever.">
-    <meta name="keywords" content="background remover, remove background, transparent PNG, AI tool, free online tool">
-    
+    <title>Free Background Remover Online — Remove Image Background Instantly | Toolyfi</title>
+    <meta name="description" content="Remove background from any photo for free in seconds. No signup, no watermark. Best free AI background remover tool online. Download transparent PNG instantly.">
+    <meta name="keywords" content="background remover, remove background from image, free background remover, transparent background, remove bg free, background eraser, photo background remover, AI background remover, cut out image background, remove background online">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Toolyfi">
+    <link rel="canonical" href="https://bg.toolyfi.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Background Remover — Remove Image Background Instantly">
+    <meta property="og:description" content="Remove background from any photo free in seconds. No signup, no watermark. Download transparent PNG instantly.">
+    <meta property="og:url" content="https://bg.toolyfi.com/">
+    <meta property="og:site_name" content="Toolyfi">
+    <meta property="og:image" content="https://bg.toolyfi.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Background Remover — Remove Image Background Instantly">
+    <meta name="twitter:description" content="Remove background from any photo free in seconds. No signup, no watermark.">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Background Remover","url":"https://bg.toolyfi.com","description":"Remove background from any image for free in seconds using AI. No signup required.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"2341","bestRating":"5"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this background remover completely free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no hidden fees, no watermark on downloads."}},{"@type":"Question","name":"What image formats does it support?","acceptedAnswer":{"@type":"Answer","text":"Supports JPG, PNG, and WEBP formats up to 12MB. Output is always transparent PNG."}},{"@type":"Question","name":"Are my images stored or shared?","acceptedAnswer":{"@type":"Answer","text":"No. Images are processed securely and never stored on our servers."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, works perfectly on Android and iPhone browsers. No app needed."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toolyfi","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Background Remover","item":"https://bg.toolyfi.com"}]}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 600px;
-            width: 100%;
-            padding: 40px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .header h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .feature {
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            font-size: 0.9em;
-            color: #555;
-        }
-        
-        .feature strong {
-            color: #667eea;
-        }
-        
-        .upload-area {
-            border: 3px dashed #667eea;
-            border-radius: 15px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            background: #f8f9fa;
-        }
-        
-        .upload-area:hover {
-            background: #eef2ff;
-            border-color: #764ba2;
-        }
-        
-        .upload-area.dragover {
-            background: #eef2ff;
-            border-color: #764ba2;
-            transform: scale(1.02);
-        }
-        
-        .upload-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        
-        .upload-text {
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .upload-subtext {
-            color: #999;
-            font-size: 0.9em;
-        }
-        
-        #imageInput {
-            display: none;
-        }
-        
-        .preview-area {
-            display: none;
-            margin-bottom: 20px;
-        }
-        
-        .preview-area.show {
-            display: block;
-        }
-        
-        .preview-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .preview-item {
-            text-align: center;
-        }
-        
-        .preview-item h3 {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .preview-item img {
-            max-width: 100%;
-            max-height: 250px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        #originalImage {
-            background: #fff;
-        }
-        
-        #processedImage {
-            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
-                        linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            background-color: #fff;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        button {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-process {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .btn-process:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-download {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        .btn-download:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-        }
-        
-        .btn-reset {
-            background: #f44336;
-            color: white;
-        }
-        
-        .btn-reset:hover {
-            background: #da190b;
-        }
-        
-        .btn-download:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .status {
-            text-align: center;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: none;
-            font-weight: 500;
-        }
-        
-        .status.show {
-            display: block;
-        }
-        
-        .status.processing {
-            background: #e3f2fd;
-            color: #1976d2;
-        }
-        
-        .status.success {
-            background: #e8f5e9;
-            color: #388e3c;
-        }
-        
-        .status.error {
-            background: #ffebee;
-            color: #d32f2f;
-        }
-        
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 10px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .info {
-            background: #f0f7ff;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 0.95em;
-            color: #555;
-        }
-        
-        .info strong {
-            color: #333;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .preview-container {
-                grid-template-columns: 1fr;
-            }
-        }
+        :root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a26;--border:#2a2a3e;--accent:#7c3aed;--accent2:#f97316;--text:#e8e8f0;--muted:#6b6b8a}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+        header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+        .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--text);text-decoration:none}
+        .logo span{color:var(--accent2)}
+        nav a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:.88rem;transition:color .2s}
+        nav a:hover{color:var(--text)}
+        .hero{text-align:center;padding:64px 20px 44px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(124,58,237,.18) 0%,transparent 70%);pointer-events:none}
+        .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.4);color:#a78bfa;padding:5px 14px;border-radius:20px;font-size:.78rem;font-weight:600;margin-bottom:18px}
+        h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:800;line-height:1.1;margin-bottom:14px;background:linear-gradient(135deg,#fff 0%,#a78bfa 55%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-sub{color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 20px;line-height:1.6}
+        .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:14px}
+        .trust-item{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.82rem}
+        .trust-item span{color:#4ade80}
+        .wrap{max-width:920px;margin:0 auto;padding:0 20px 60px}
+        .api-note{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-radius:12px;padding:14px 18px;margin-bottom:20px}
+        .api-note p{font-size:.88rem;color:#fdba74;line-height:1.5}
+        .api-note a{color:var(--accent2);text-decoration:none;font-weight:600}
+        .api-row{display:flex;gap:10px;margin-bottom:20px}
+        .api-row input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s}
+        .api-row input:focus{border-color:var(--accent)}
+        .api-row input::placeholder{color:var(--muted)}
+        .save-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:11px 18px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.84rem;white-space:nowrap;transition:border-color .2s}
+        .save-btn:hover{border-color:var(--accent)}
+        .upload-zone{background:var(--card);border:2px dashed var(--border);border-radius:20px;padding:56px 40px;text-align:center;cursor:pointer;transition:all .3s}
+        .upload-zone:hover,.upload-zone.over{border-color:var(--accent);background:rgba(124,58,237,.05)}
+        .upload-icon{font-size:3.2rem;margin-bottom:14px;display:block}
+        .upload-zone h2{font-family:'Syne',sans-serif;font-size:1.35rem;margin-bottom:8px}
+        .upload-zone p{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+        .up-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;padding:12px 26px;border-radius:10px;font-weight:600;font-size:.92rem;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s}
+        .up-btn:hover{background:#6d28d9;transform:translateY(-1px)}
+        #fileInput{display:none}
+        .processing{display:none;text-align:center;padding:48px}
+        .spinner{width:56px;height:56px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 18px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .processing p{color:var(--muted)}
+        .step-txt{margin-top:8px;font-size:.84rem;color:var(--accent)}
+        .result-area{display:none;margin-top:28px}
+        .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+        .img-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+        .img-label{padding:10px 14px;font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+        .img-card img{width:100%;height:250px;object-fit:contain;padding:14px;background:repeating-conic-gradient(#1e1e2e 0% 25%,#28283e 0% 50%) 0 0/20px 20px}
+        .img-card img.orig{background:#1a1a26}
+        .act-row{display:flex;gap:10px;flex-wrap:wrap}
+        .dl-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--accent2);color:white;padding:13px 24px;border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .2s}
+        .dl-btn:hover{background:#ea6c00;transform:translateY(-1px)}
+        .rst-btn{display:flex;align-items:center;gap:6px;background:var(--card);color:var(--muted);padding:13px 18px;border-radius:10px;font-weight:500;cursor:pointer;border:1px solid var(--border);font-family:'DM Sans',sans-serif;transition:all .2s}
+        .rst-btn:hover{color:var(--text);border-color:var(--muted)}
+        .err-msg{display:none;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:14px 18px;color:#fca5a5;font-size:.88rem;margin-top:14px}
+        .section{max-width:920px;margin:0 auto;padding:0 20px 60px}
+        .sec-title{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;text-align:center;margin-bottom:10px}
+        .sec-sub{text-align:center;color:var(--muted);font-size:.95rem;margin-bottom:36px}
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;transition:border-color .2s}
+        .feat-card:hover{border-color:var(--accent)}
+        .feat-icon{font-size:1.9rem;margin-bottom:12px;display:block}
+        .feat-card h3{font-family:'Syne',sans-serif;font-size:.98rem;margin-bottom:6px}
+        .feat-card p{color:var(--muted);font-size:.84rem;line-height:1.55}
+        .use-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .use-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center}
+        .use-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+        .use-card h4{font-size:.9rem;font-weight:600;margin-bottom:4px}
+        .use-card p{color:var(--muted);font-size:.8rem;line-height:1.4}
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .step-card{text-align:center;padding:20px}
+        .step-num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--accent);border-radius:50%;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:14px}
+        .step-card h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+        .step-card p{color:var(--muted);font-size:.84rem;line-height:1.5}
+        .faq-list{display:flex;flex-direction:column;gap:12px}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+        .faq-q{padding:16px 20px;font-weight:600;font-size:.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+        .faq-q:hover{background:rgba(124,58,237,.08)}
+        .faq-a{padding:0 20px 16px;color:var(--muted);font-size:.88rem;line-height:1.6;display:none}
+        .faq-item.open .faq-a{display:block}
+        .faq-icon{transition:transform .2s;font-style:normal}
+        .faq-item.open .faq-icon{transform:rotate(45deg)}
+        .compare-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+        table{width:100%;border-collapse:collapse}
+        th,td{padding:12px 16px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border)}
+        th{background:var(--card);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-size:.78rem}
+        .hl td{background:rgba(124,58,237,.08)}
+        .hl td:first-child{color:var(--accent2);font-weight:700}
+        .yes{color:#4ade80}
+        .no{color:#f87171}
+        footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 20px 24px}
+        .f-inner{max-width:920px;margin:0 auto}
+        .f-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+        .f-brand p{color:var(--muted);font-size:.85rem;line-height:1.6;margin-top:10px;max-width:280px}
+        .f-col h4{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
+        .f-col a{display:block;color:var(--muted);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:color .2s}
+        .f-col a:hover{color:var(--text)}
+        .f-bot{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+        .f-bot p{color:var(--muted);font-size:.82rem}
+        .f-bot a{color:var(--accent2);text-decoration:none}
+        @media(max-width:768px){header{padding:0 16px}nav{display:none}.feat-grid{grid-template-columns:1fr 1fr}.use-grid{grid-template-columns:1fr 1fr}.steps-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.f-top{grid-template-columns:1fr;gap:24px}}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🖼️ Background Remover</h1>
-            <p>Remove image backgrounds instantly with AI</p>
+
+<header>
+    <a href="https://toolyfi.com" class="logo">Tool<span>yfi</span></a>
+    <nav>
+        <a href="https://toolyfi.com">Home</a>
+        <a href="https://toolyfi.com/#tools">All Tools</a>
+        <a href="https://toolyfi.com/updatesworld/updatesworld.html">News</a>
+        <a href="https://toolyfi.com/about.html">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="badge">✨ AI-Powered · 100% Free · No Signup</div>
+    <h1>Remove Image Background<br>Free &amp; Instantly</h1>
+    <p class="hero-sub">Upload any photo — AI removes the background in seconds. Download a perfect transparent PNG. No watermark, no signup, no limits.</p>
+    <div class="trust-row">
+        <div class="trust-item"><span>✓</span> 100% Free Forever</div>
+        <div class="trust-item"><span>✓</span> No Watermark</div>
+        <div class="trust-item"><span>✓</span> No Signup Required</div>
+        <div class="trust-item"><span>✓</span> Instant Download</div>
+        <div class="trust-item"><span>✓</span> JPG, PNG, WEBP</div>
+    </div>
+</section>
+
+<div class="wrap">
+    <div class="api-note">
+        <p>🔑 Uses <strong>remove.bg API</strong> (free: 50 images/month). Get free key at <a href="https://www.remove.bg/api" target="_blank" rel="noopener">remove.bg/api</a> → paste below. Saved in your browser only.</p>
+    </div>
+    <div class="api-row">
+        <input type="password" id="apiKeyInput" placeholder="Paste your remove.bg API key here...">
+        <button class="save-btn" onclick="saveApiKey()">💾 Save Key</button>
+    </div>
+    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+        <span class="upload-icon">🖼️</span>
+        <h2>Drop Your Image Here</h2>
+        <p>Supports JPG, PNG, WEBP — Max 12 MB</p>
+        <button class="up-btn" onclick="event.stopPropagation();document.getElementById('fileInput').click()">📁 Choose Image</button>
+        <input type="file" id="fileInput" accept="image/*" onchange="handleFile(this.files[0])">
+    </div>
+    <div class="processing" id="processing">
+        <div class="spinner"></div>
+        <p>Removing background with AI...</p>
+        <div class="step-txt" id="stepTxt">Uploading image...</div>
+    </div>
+    <div class="err-msg" id="errMsg"></div>
+    <div class="result-area" id="resultArea">
+        <div class="result-grid">
+            <div class="img-card">
+                <div class="img-label">📷 Original</div>
+                <img id="origImg" class="orig" src="" alt="Original image before background removal">
+            </div>
+            <div class="img-card">
+                <div class="img-label">✨ Background Removed</div>
+                <img id="resImg" src="" alt="Image with background removed transparent PNG">
+            </div>
         </div>
-        
-        <div class="features">
-            <div class="feature">
-                <strong>✨</strong> <br> AI Powered
-            </div>
-            <div class="feature">
-                <strong>⚡</strong> <br> Ultra Fast
-            </div>
-            <div class="feature">
-                <strong>🆓</strong> <br> 100% Free
-            </div>
-        </div>
-        
-        <div class="upload-area" id="uploadArea">
-            <div class="upload-icon">📤</div>
-            <div class="upload-text">Drop image here or click to upload</div>
-            <div class="upload-subtext">PNG, JPG, GIF, BMP, WEBP (Max 50MB)</div>
-            <input type="file" id="imageInput" accept="image/*">
-        </div>
-        
-        <div class="preview-area" id="previewArea">
-            <div class="preview-container">
-                <div class="preview-item">
-                    <h3>Original Image</h3>
-                    <img id="originalImage" src="" alt="Original">
-                </div>
-                <div class="preview-item">
-                    <h3>Processed Image</h3>
-                    <img id="processedImage" src="" alt="Processed">
-                </div>
-            </div>
-            
-            <div class="status" id="status"></div>
-            
-            <div class="button-group">
-                <button class="btn-process" id="processBtn" onclick="processImage()">🔄 Remove Background</button>
-                <button class="btn-download" id="downloadBtn" onclick="downloadImage()" disabled>⬇️ Download PNG</button>
-                <button class="btn-reset" id="resetBtn" onclick="resetTool()">↺ Reset</button>
-            </div>
-        </div>
-        
-        <div class="info">
-            <strong>💡 How it works:</strong><br>
-            1. Upload your image<br>
-            2. Click "Remove Background"<br>
-            3. Download the transparent PNG<br><br>
-            <strong>✅ Features:</strong> AI-powered, Ultra HD quality, Transparent PNG output, No watermarks
+        <div class="act-row">
+            <a id="dlBtn" class="dl-btn" download="toolyfi-bg-removed.png">⬇️ Download Transparent PNG</a>
+            <button class="rst-btn" onclick="resetTool()">🔄 Remove Another</button>
         </div>
     </div>
-    
-    <script>
-        const uploadArea = document.getElementById('uploadArea');
-        const imageInput = document.getElementById('imageInput');
-        const previewArea = document.getElementById('previewArea');
-        const originalImage = document.getElementById('originalImage');
-        const processedImage = document.getElementById('processedImage');
-        const statusDiv = document.getElementById('status');
-        const processBtn = document.getElementById('processBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        
-        let selectedFile = null;
-        let processedImageData = null;
-        
-        // API endpoint (change this to your Vercel backend URL)
-        const API_URL = 'https://background-remover-api.vercel.app/api/remove';
-        
-        // Upload area click
-        uploadArea.addEventListener('click', () => imageInput.click());
-        
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('dragover');
-        });
-        
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragover');
-        });
-        
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFileSelect(files[0]);
-            }
-        });
-        
-        // File input change
-        imageInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFileSelect(e.target.files[0]);
-            }
-        });
-        
-        function handleFileSelect(file) {
-            if (!file.type.startsWith('image/')) {
-                showStatus('Please select a valid image file', 'error');
-                return;
-            }
-            
-            if (file.size > 50 * 1024 * 1024) {
-                showStatus('File is too large (max 50MB)', 'error');
-                return;
-            }
-            
-            selectedFile = file;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                originalImage.src = e.target.result;
-                previewArea.classList.add('show');
-                processedImage.src = '';
-                downloadBtn.disabled = true;
-                showStatus('Image loaded. Ready to process!', 'success');
-            };
-            reader.readAsDataURL(file);
-        }
-        
-        async function processImage() {
-            if (!selectedFile) {
-                showStatus('Please select an image first', 'error');
-                return;
-            }
-            
-            showStatus('<span class="spinner"></span> Processing... This may take a moment', 'processing');
-            processBtn.disabled = true;
-            
-            try {
-                const formData = new FormData();
-                formData.append('image', selectedFile);
-                
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Processing failed');
-                }
-                
-                const blob = await response.blob();
-                processedImageData = blob;
-                const url = URL.createObjectURL(blob);
-                processedImage.src = url;
-                
-                downloadBtn.disabled = false;
-                showStatus('✅ Background removed successfully!', 'success');
-            } catch (error) {
-                showStatus('Error processing image. Please try again.', 'error');
-                console.error('Error:', error);
-            } finally {
-                processBtn.disabled = false;
-            }
-        }
-        
-        function downloadImage() {
-            if (!processedImageData) return;
-            
-            const url = URL.createObjectURL(processedImageData);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'image_no_background.png';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showStatus('✅ Download started!', 'success');
-        }
-        
-        function resetTool() {
-            selectedFile = null;
-            processedImageData = null;
-            originalImage.src = '';
-            processedImage.src = '';
-            imageInput.value = '';
-            previewArea.classList.remove('show');
-            downloadBtn.disabled = true;
-            statusDiv.classList.remove('show');
-            showStatus('Ready to upload new image', 'success');
-        }
-        
-        function showStatus(message, type) {
-            statusDiv.innerHTML = message;
-            statusDiv.className = `status show ${type}`;
-        }
-    </script>
+</div>
+
+<section class="section">
+    <h2 class="sec-title">How It Works</h2>
+    <p class="sec-sub">Remove any background in 3 simple steps — completely free</p>
+    <div class="steps-grid">
+        <div class="step-card"><div class="step-num">1</div><h3>Upload Your Image</h3><p>Drag &amp; drop or click to upload any JPG, PNG, or WEBP image up to 12MB in size.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h3>AI Removes Background</h3><p>Our AI instantly detects your subject and removes the background with pixel-perfect precision.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h3>Download PNG</h3><p>Download your transparent PNG instantly. No watermark, no signup, completely free forever.</p></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="sec-title">Why Choose Toolyfi Background Remover?</h2>
+    <p class="sec-sub">The fastest, most accurate free background remover available online</p>
+    <div class="feat-grid">
+        <div class="feat-card"><span class="feat-icon">⚡</span><h3>Lightning Fast</h3><p>AI processes your image in under 5 seconds. No queue, no waiting — instant results every time.</p></div>
+        <div class="feat-card"><span class="feat-icon">🎯</span><h3>Pixel-Perfect Precision</h3><p>Hair, fur, fine edges — all handled with extreme accuracy. Professional quality results guaranteed.</p></div>
+        <div class="feat-card"><span class="feat-icon">🔒</span><h3>100% Private</h3><p>Your images are never stored or shared. Processed securely and deleted immediately after download.</p></div>
+        <div class="feat-card"><span class="feat-icon">💰</span><h3>Always Free</h3><p>No hidden fees, no subscriptions. Free background removal with zero watermarks on your images.</p></div>
+        <div class="feat-card"><span class="feat-icon">📱</span><h3>Works on All Devices</h3><p>Desktop, tablet, or mobile — works perfectly on any device with any modern browser.</p></div>
+        <div class="feat-card"><span class="feat-icon">🖼️</span><h3>All Image Formats</h3><p>Supports JPG, JPEG, PNG, and WEBP input. Always outputs a crisp transparent PNG file.</p></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="sec-title">What Can You Use It For?</h2>
+    <p class="sec-sub">Perfect for dozens of everyday professional and personal use cases</p>
+    <div class="use-grid">
+        <div class="use-card"><span class="use-icon">🛒</span><h4>Product Photos</h4><p>Clean white background product images for Amazon, eBay, Shopify stores</p></div>
+        <div class="use-card"><span class="use-icon">👤</span><h4>Profile Pictures</h4><p>Remove backgrounds from LinkedIn headshots and professional ID photos</p></div>
+        <div class="use-card"><span class="use-icon">🎨</span><h4>Graphic Design</h4><p>Cut out objects for posters, banners and creative design projects</p></div>
+        <div class="use-card"><span class="use-icon">📸</span><h4>Photo Editing</h4><p>Replace backgrounds in portraits and add custom scenes behind subjects</p></div>
+        <div class="use-card"><span class="use-icon">📊</span><h4>Presentations</h4><p>Add transparent images to PowerPoint and Google Slides without white boxes</p></div>
+        <div class="use-card"><span class="use-icon">👕</span><h4>T-Shirt / Print</h4><p>Remove backgrounds from logos and artwork for print-on-demand products</p></div>
+        <div class="use-card"><span class="use-icon">🏠</span><h4>Real Estate</h4><p>Clean property photos by removing unwanted backgrounds from images</p></div>
+        <div class="use-card"><span class="use-icon">🎬</span><h4>Social Media</h4><p>Create eye-catching Instagram posts and YouTube thumbnails with cutouts</p></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="sec-title">Toolyfi vs Other Background Removers</h2>
+    <p class="sec-sub">See why Toolyfi is the best free background remover online</p>
+    <div class="compare-wrap">
+        <table>
+            <thead><tr><th>Feature</th><th>Toolyfi ✨</th><th>Remove.bg</th><th>Canva</th><th>Adobe Express</th></tr></thead>
+            <tbody>
+                <tr class="hl"><td>100% Free</td><td class="yes">✓ Yes</td><td class="no">✗ Paid</td><td class="no">✗ Paid</td><td class="no">✗ Paid</td></tr>
+                <tr><td>No Signup Required</td><td class="yes">✓ Yes</td><td class="no">✗ No</td><td class="no">✗ No</td><td class="no">✗ No</td></tr>
+                <tr class="hl"><td>No Watermark</td><td class="yes">✓ Yes</td><td class="no">✗ Watermark</td><td class="no">✗ Watermark</td><td class="yes">✓ Yes</td></tr>
+                <tr><td>AI-Powered Precision</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>
+                <tr class="hl"><td>Privacy (No Storage)</td><td class="yes">✓ Yes</td><td class="no">✗ Stored</td><td class="no">✗ Stored</td><td class="no">✗ Stored</td></tr>
+                <tr><td>Works on Mobile</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <p class="sec-sub">Everything you need to know about our free background remover</p>
+    <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this background remover completely free? <i class="faq-icon">+</i></div><div class="faq-a">Yes, Toolyfi Background Remover is 100% free. No signup, no hidden fees, no watermark on your downloaded images. Use it as many times as you want.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What image formats are supported? <i class="faq-icon">+</i></div><div class="faq-a">We support JPG, JPEG, PNG, and WEBP formats as input, up to 12MB per image. The output is always a high-quality transparent PNG file.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does the AI background removal work? <i class="faq-icon">+</i></div><div class="faq-a">Our AI model analyzes every pixel of your image, identifies the main subject (person, product, animal, object), and precisely removes everything behind it — including fine details like hair strands and transparent edges.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are my images stored or shared with anyone? <i class="faq-icon">+</i></div><div class="faq-a">No. Your privacy is our priority. Images are processed instantly and never stored on our servers. Once you download your result, the image data is discarded completely.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I use the results for commercial purposes? <i class="faq-icon">+</i></div><div class="faq-a">Yes! Images you process with Toolyfi Background Remover are yours to use freely — for personal projects, e-commerce, social media, or any commercial work.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does it work on mobile phones? <i class="faq-icon">+</i></div><div class="faq-a">Yes! Toolyfi Background Remover is fully responsive and works perfectly on Android and iPhone browsers. No app download needed — just open bg.toolyfi.com in your browser.</div></div>
+    </div>
+</section>
+
+<footer>
+    <div class="f-inner">
+        <div class="f-top">
+            <div class="f-brand">
+                <a href="https://toolyfi.com" class="logo">Tool<span>yfi</span></a>
+                <p>Free online tools for everyone. Background remover, image tools, calculators, converters and 100+ more tools — all free, no signup required.</p>
+            </div>
+            <div class="f-col">
+                <h4>Free Tools</h4>
+                <a href="https://toolyfi.com/image-resizer.html">Image Resizer</a>
+                <a href="https://toolyfi.com/image-compressor.html">Image Compressor</a>
+                <a href="https://bg.toolyfi.com">Background Remover</a>
+                <a href="https://toolyfi.com/qr-code-generator.html">QR Code Generator</a>
+                <a href="https://toolyfi.com/password-generator.html">Password Generator</a>
+                <a href="https://toolyfi.com/scientific-calculator.html">Scientific Calculator</a>
+            </div>
+            <div class="f-col">
+                <h4>Company</h4>
+                <a href="https://toolyfi.com">Toolyfi Home</a>
+                <a href="https://toolyfi.com/about.html">About Us</a>
+                <a href="https://toolyfi.com/contact.html">Contact</a>
+                <a href="https://toolyfi.com/privacy.html">Privacy Policy</a>
+                <a href="https://toolyfi.com/terms.html">Terms of Use</a>
+            </div>
+        </div>
+        <div class="f-bot">
+            <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> · Free Background Remover Online · No Signup · No Watermark · Transparent PNG</p>
+            <p>Powered by <a href="https://www.remove.bg" target="_blank" rel="noopener">remove.bg API</a></p>
+        </div>
+    </div>
+</footer>
+
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+<script>
+    const saved=localStorage.getItem('rbg_key')||'';
+    if(saved)document.getElementById('apiKeyInput').value=saved;
+    function saveApiKey(){const k=document.getElementById('apiKeyInput').value.trim();if(!k){alert('Please enter API key first.');return;}localStorage.setItem('rbg_key',k);const b=document.querySelector('.save-btn');b.textContent='✅ Saved!';setTimeout(()=>b.textContent='💾 Save Key',2000);}
+    const zone=document.getElementById('uploadZone');
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('over');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/'))handleFile(f);});
+    function showErr(msg){const el=document.getElementById('errMsg');el.textContent='⚠️ '+msg;el.style.display='block';document.getElementById('processing').style.display='none';}
+    function handleFile(file){
+        if(!file)return;
+        const key=document.getElementById('apiKeyInput').value.trim()||localStorage.getItem('rbg_key')||'';
+        if(!key){showErr('Please enter your remove.bg API key first. Get one free at remove.bg/api');return;}
+        if(file.size>12*1024*1024){showErr('File too large. Max 12MB.');return;}
+        const r=new FileReader();r.onload=e=>{document.getElementById('origImg').src=e.target.result;};r.readAsDataURL(file);
+        document.getElementById('uploadZone').style.display='none';
+        document.getElementById('errMsg').style.display='none';
+        document.getElementById('resultArea').style.display='none';
+        document.getElementById('processing').style.display='block';
+        const fd=new FormData();fd.append('image_file',file);fd.append('size','auto');
+        let si=0;const steps=['Uploading image...','Analyzing subject...','Removing background...','Finalizing PNG...'];
+        const se=document.getElementById('stepTxt');
+        const iv=setInterval(()=>{si=(si+1)%steps.length;se.textContent=steps[si];},1100);
+        fetch('https://api.remove.bg/v1.0/removebg',{method:'POST',headers:{'X-Api-Key':key},body:fd})
+        .then(res=>{clearInterval(iv);if(!res.ok)return res.json().then(e=>{throw new Error(e.errors?.[0]?.title||'API error. Check your key.');});return res.blob();})
+        .then(blob=>{const url=URL.createObjectURL(blob);document.getElementById('resImg').src=url;document.getElementById('dlBtn').href=url;document.getElementById('processing').style.display='none';document.getElementById('resultArea').style.display='block';gtag('event','bg_removed',{event_category:'tool_use'});})
+        .catch(err=>{clearInterval(iv);showErr(err.message||'Something went wrong. Please try again.');document.getElementById('uploadZone').style.display='block';});
+    }
+    function resetTool(){document.getElementById('uploadZone').style.display='block';document.getElementById('resultArea').style.display='none';document.getElementById('errMsg').style.display='none';document.getElementById('fileInput').value='';document.getElementById('processing').style.display='none';}
+    function toggleFaq(el){el.parentElement.classList.toggle('open');}
+</script>
 </body>
 </html>

@@ -17,7 +17,7 @@ Remove image backgrounds instantly with AI-powered precision. Upload any image a
 - **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** Flask, Python
 - **AI:** rembg (AI-powered background removal)
-- **Hosting:** Vercel (Backend), GitHub Pages (Frontend)
+- **Hosting:** Railway or another Python host (Backend), GitHub Pages (Frontend)
 - **Libraries:** 
   - Flask
   - Flask-CORS
@@ -58,23 +58,22 @@ python -m http.server 8000
 
 ## Deployment
 
-### Vercel Deployment (Backend)
+### Backend Deployment (Railway)
 
-1. Push code to GitHub
-2. Go to Vercel dashboard
-3. Click "New Project"
-4. Import your GitHub repository
-5. Vercel will auto-detect Flask app
-6. Click "Deploy"
-7. Copy the deployment URL
-8. Update API_URL in `background-remover.html` with your Vercel URL
+1. Push this repository to GitHub.
+2. Create a Railway service from the repository.
+3. Railway uses the included `Procfile` to start Gunicorn and the Flask app.
+4. Add the public service URL to `BACKEND_API` in `index.html`, ending in `/api/remove-bg`.
+5. Confirm the service responds at `/api/health` before testing an image.
+
+The repository supports two removal contracts: `POST /api/remove-bg` accepts JSON with a base64 data URL and returns JSON with a PNG data URL for the current frontend; `POST /api/remove` accepts multipart form data under the `image` field and returns a PNG file.
 
 ### GitHub Pages (Frontend)
 
-1. The HTML file can be served directly from GitHub Pages
-2. Place `background-remover.html` in your repo
-3. Enable GitHub Pages in repository settings
-4. Access via: `https://yourusername.github.io/repo/background-remover.html`
+1. Enable GitHub Pages for the repository.
+2. Serve `index.html` as the frontend.
+3. Ensure `BACKEND_API` points to the deployed Python service; GitHub Pages cannot run `rembg` or safely store a server API key.
+4. Access via the repository’s GitHub Pages URL or a custom domain.
 
 ## API Usage
 
@@ -110,7 +109,7 @@ curl -X POST -F "image=@your_image.jpg" \
 {
   "status": "healthy",
   "service": "background-remover",
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
 ```
 
@@ -137,9 +136,9 @@ curl -X POST -F "image=@your_image.jpg" \
 background-remover/
 ├── app.py                 # Flask backend
 ├── requirements.txt       # Python dependencies
-├── vercel.json           # Vercel configuration
-├── background-remover.html # Frontend UI
-├── index.html            # Homepage (optional)
+├── Procfile              # Gunicorn/Railway start command
+├── vercel.json           # Optional static hosting configuration
+├── index.html            # Frontend UI
 ├── .gitignore            # Git ignore rules
 └── README.md             # This file
 ```
@@ -168,9 +167,10 @@ background-remover/
 
 ## API Rate Limiting
 
-- Free tier: Unlimited requests
-- No authentication required
-- CORS enabled for cross-origin requests
+- No application-level rate limit is included yet; add host-level limits before high-traffic production use.
+- No authentication is required by the current demo API.
+- CORS is enabled for the browser frontend.
+- Uploaded image bytes are processed in memory and are not intentionally persisted by the application.
 
 ## Troubleshooting
 

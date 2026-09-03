@@ -1,3 +1,12 @@
+---
+title: Toolyfi Background Remover API
+emoji: 🖼️
+colorFrom: purple
+colorTo: yellow
+sdk: docker
+app_port: 7860
+---
+
 # 🖼️ Background Remover
 
 Remove image backgrounds instantly with AI-powered precision. Upload any image and download a clean PNG with transparent background.

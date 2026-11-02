@@ -22,7 +22,9 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return sendJson(res, 405, { success: false, error: 'Method not allowed' });
 
-  const apiKey = process.env.CLIPDROP_KEY;
+  const apiKey = (process.env.CLIPDROP_KEY || '')
+    .trim()
+    .replace(/[‐‑‒–—−]/g, '-');
   if (!apiKey) return sendJson(res, 500, { success: false, error: 'Clipdrop API key is not configured' });
 
   try {

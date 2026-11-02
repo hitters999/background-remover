@@ -57,6 +57,7 @@ module.exports = async function handler(req, res) {
       return sendJson(res, response.status === 402 ? 402 : 502, {
         success: false,
         error: response.status === 402 ? 'Clipdrop credits are unavailable' : 'Background removal provider failed',
+        provider_status: response.status,
       });
     }
 
